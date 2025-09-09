@@ -2,7 +2,7 @@
 
 A learning project focused on personal finance management using React Native and Expo.
 
-![DT Money Banner](assets/thumbnail.png)
+![DT Money Banner](assets/dt-money-cover.png)
 
 ## About the Project
 
