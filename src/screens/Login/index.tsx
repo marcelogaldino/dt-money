@@ -1,9 +1,13 @@
-import { Text, View} from "react-native"
+import { DimissKeyboardView } from "@/components/DimissKeyboardView"
+import { Text, TextInput, TouchableOpacity, View} from "react-native"
+import { LoginForm } from "./LoginForm"
 
 export const Login = () => {
   return (
-    <View className="flex-1 justify-center items-center bg-white">
-      <Text>Tela de login</Text>
-    </View>
+    <DimissKeyboardView >
+      <View className="flex-1 w-[82%] self-center">
+        <LoginForm />
+      </View>
+    </DimissKeyboardView>
   )
 }
