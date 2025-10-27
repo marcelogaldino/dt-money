@@ -7,20 +7,24 @@ import { useForm } from "react-hook-form";
 import { Text, View } from "react-native";
 import { schema } from "./schema";
 
-export interface FormLoginParams {
+export interface RegisterFormParams {
+  name: string;
   email: string;
   password: string;
+  confirmPassword: string;
 }
 
-export const LoginForm = () => {
+export const RegisterForm = () => {
   const {
     control,
     handleSubmit,
     formState: { isSubmitting },
-  } = useForm<FormLoginParams>({
+  } = useForm<RegisterFormParams>({
     defaultValues: {
+      name: "",
       email: "",
       password: "",
+      confirmPassword: "",
     },
     resolver: yupResolver(schema),
   });
@@ -31,6 +35,14 @@ export const LoginForm = () => {
 
   return (
     <>
+      <AppInput
+        control={control}
+        name="name"
+        label="NOME"
+        placeholder="Seu nome"
+        leftIconName="person"
+      />
+
       <AppInput
         control={control}
         name="email"
@@ -48,25 +60,34 @@ export const LoginForm = () => {
         secureTextEntry
       />
 
+      <AppInput
+        control={control}
+        name="confirmPassword"
+        label="SENHA"
+        placeholder="Confirme sua senha"
+        leftIconName="lock-outline"
+        secureTextEntry
+      />
+
       <View className="flex-1 justify-between mt-8 mb-6 min-h-[250px]">
         <AppButton
           onPress={handleSubmit(onSubmit)}
           iconName="arrow-forward"
           mode="fill"
         >
-          Login
+          Cadastrar
         </AppButton>
 
         <View>
           <Text className="mb-6 text-gray-300 text-base">
-            Ainda não tem uma conta?
+            Já possui uma conta?
           </Text>
           <AppButton
             iconName="arrow-forward"
             mode="outline"
-            onPress={() => navigation.navigate("Register")}
+            onPress={() => navigation.navigate("Login")}
           >
-            Cadastrar
+            Acessar
           </AppButton>
         </View>
       </View>
