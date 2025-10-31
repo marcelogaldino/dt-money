@@ -1,27 +1,30 @@
+import { NavigationContainer } from "@react-navigation/native";
+import { PublicRoutes } from "./PublicRoutes";
+import { useCallback, useState } from "react";
+import { PrivateRoutes } from "./PrivateRoutes";
+import { SystemBars } from "react-native-edge-to-edge";
+import { useAuthContext } from "@/Context/auth.context";
+import { Loading } from "@/screens/Loading";
 
-import { NavigationContainer } from '@react-navigation/native';
-import { PublicRoutes } from './PublicRoutes';
-import { useCallback, useState } from 'react';
-import { PrivateRoutes } from './PrivateRoutes';
-import {SystemBars} from 'react-native-edge-to-edge'
- 
 const NavigationRoutes = () => {
-  const [user, setUser] = useState(undefined)
+  const [loading, setLoading] = useState(true);
+  const { user, token } = useAuthContext();
 
   const Routes = useCallback(() => {
-    if(!user) {
-      return <PublicRoutes />
+    if (loading) return <Loading setLoading={setLoading} />;
+    if (!user || !token) {
+      return <PublicRoutes />;
     } else {
-      return <PrivateRoutes />
+      return <PrivateRoutes />;
     }
-  }, [user])
+  }, [user, token]);
 
-  return(
+  return (
     <NavigationContainer>
-      <SystemBars style={'light'}/>
+      <SystemBars style={"light"} />
       <Routes />
     </NavigationContainer>
-  )
-}
+  );
+};
 
-export default NavigationRoutes
+export default NavigationRoutes;

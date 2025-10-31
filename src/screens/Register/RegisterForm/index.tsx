@@ -6,6 +6,8 @@ import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { useForm } from "react-hook-form";
 import { Text, View } from "react-native";
 import { schema } from "./schema";
+import { AxiosError } from "axios";
+import { useAuthContext } from "@/Context/auth.context";
 
 export interface RegisterFormParams {
   name: string;
@@ -31,7 +33,17 @@ export const RegisterForm = () => {
 
   const navigation = useNavigation<NavigationProp<PublicStackParamsList>>();
 
-  const onSubmit = () => {};
+  const { handleRegister } = useAuthContext();
+
+  const onSubmit = async (userData: RegisterFormParams) => {
+    try {
+      await handleRegister(userData);
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        console.log(error.response?.data);
+      }
+    }
+  };
 
   return (
     <>
