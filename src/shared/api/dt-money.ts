@@ -2,7 +2,7 @@ import axios from "axios";
 import { Platform } from "react-native";
 
 const baseURL = Platform.select({
-  android: "http://10.0.2.2:3001",
+  android: "http://192.168.18.236:3001",
   ios: "http://localhost:3001",
 });
 
