@@ -17,7 +17,7 @@ const NavigationRoutes = () => {
     } else {
       return <PrivateRoutes />;
     }
-  }, [user, token]);
+  }, [user, token, loading]);
 
   return (
     <NavigationContainer>

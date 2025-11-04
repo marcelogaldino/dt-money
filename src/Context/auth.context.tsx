@@ -32,6 +32,8 @@ export const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
   const handleAuthenticate = async (userData: FormLoginParams) => {
     const { user, token } = await authService.authenticate(userData);
 
+    console.log({ user, token });
+
     await AsyncStorage.setItem(
       "dt-money-user",
       JSON.stringify({ user, token })

@@ -15,7 +15,6 @@ export const Loading: FC<LoadingParams> = ({ setLoading }) => {
     (async () => {
       try {
         const user = await restoreUserSession();
-
         if (!user) {
           await handleLogout();
         }
