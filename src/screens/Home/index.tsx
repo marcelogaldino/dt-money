@@ -8,7 +8,6 @@ import { FlatList, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export const Home = () => {
-  const { handleLogout } = useAuthContext();
   const { fetchCategories, fetchTransactions } = useTransactionContext();
   const { handleError } = useErrorHandler();
 
@@ -22,8 +21,7 @@ export const Home = () => {
 
   useEffect(() => {
     (async () => {
-      await handleFetchCategories();
-      await fetchTransactions();
+      await Promise.all([handleFetchCategories(), fetchTransactions()]);
     })();
   }, []);
 
