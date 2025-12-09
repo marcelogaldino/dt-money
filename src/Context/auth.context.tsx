@@ -1,7 +1,7 @@
 import { FormLoginParams } from "@/screens/Login/LoginForm";
 import { RegisterFormParams } from "@/screens/Register/RegisterForm";
 import { IAuthenticateResponse } from "@/shared/interfaces/http/authenticate-response.interface";
-import { IUser } from "@/shared/interfaces/http/user.interface";
+import { IUser } from "@/shared/interfaces/user.interface";
 import * as authService from "@/shared/services/dt-money/auth.service";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {

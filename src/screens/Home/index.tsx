@@ -1,14 +1,15 @@
 import { AppHeader } from "@/components/AppHeader";
+import { ListHeader } from "@/components/ListHeader";
 import { useAuthContext } from "@/Context/auth.context";
 import { useTransactionContext } from "@/Context/transaction.context";
 import { useErrorHandler } from "@/shared/hooks/useErrorHandler";
 import { useEffect } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { FlatList, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export const Home = () => {
   const { handleLogout } = useAuthContext();
-  const { fetchCategories } = useTransactionContext();
+  const { fetchCategories, fetchTransactions } = useTransactionContext();
   const { handleError } = useErrorHandler();
 
   const handleFetchCategories = async () => {
@@ -22,16 +23,18 @@ export const Home = () => {
   useEffect(() => {
     (async () => {
       await handleFetchCategories();
+      await fetchTransactions();
     })();
   }, []);
 
   return (
     <SafeAreaView className="flex-1 bg-background-primary">
-      <AppHeader />
-      <Text>Home</Text>
-      <TouchableOpacity onPress={handleLogout}>
-        <Text>Sair</Text>
-      </TouchableOpacity>
+      <FlatList
+        className="bg-background-secondary"
+        data={[]}
+        renderItem={() => <></>}
+        ListHeaderComponent={ListHeader}
+      />
     </SafeAreaView>
   );
 };
