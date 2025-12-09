@@ -1,15 +1,18 @@
 import axios from "axios";
 import { Platform } from "react-native";
 import { AppError } from "../helpers/AppError";
+import { addTokenToRequest } from "../helpers/axios.helper";
 
 const baseURL = Platform.select({
-  android: "http://SEU_IP:3001",
+  android: "http://localhost:3001",
   ios: "http://localhost:3001",
 });
 
 export const dtMoneyApi = axios.create({
   baseURL,
 });
+
+addTokenToRequest(dtMoneyApi);
 
 dtMoneyApi.interceptors.response.use(
   (config) => config,
