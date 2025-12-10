@@ -1,10 +1,8 @@
-import { AppHeader } from "@/components/AppHeader";
 import { ListHeader } from "@/components/ListHeader";
-import { useAuthContext } from "@/Context/auth.context";
 import { useTransactionContext } from "@/Context/transaction.context";
 import { useErrorHandler } from "@/shared/hooks/useErrorHandler";
 import { useEffect } from "react";
-import { FlatList, Text, TouchableOpacity, View } from "react-native";
+import { FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export const Home = () => {
