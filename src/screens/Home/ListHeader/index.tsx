@@ -1,5 +1,5 @@
 import { ScrollView, Text, View } from "react-native";
-import { AppHeader } from "../AppHeader";
+import { AppHeader } from "@/components/AppHeader";
 import { TransactionCard } from "./TransactionCard";
 import { TransactionTypes } from "@/shared/enums/TransactionTypes";
 import { useTransactionContext } from "@/Context/transaction.context";
