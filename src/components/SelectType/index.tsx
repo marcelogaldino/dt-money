@@ -56,7 +56,7 @@ export const TransactionTypeSelector: FC<Props> = ({
           size={30}
           className="mr-2"
         />
-        <Text className="text-white font-bold">Saida</Text>
+        <Text className="text-white font-bold">Saída</Text>
       </TouchableOpacity>
     </View>
   );
