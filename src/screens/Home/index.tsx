@@ -45,7 +45,6 @@ export const Home = () => {
   const handleLoadMoreTransactions = async () => {
     try {
       handleLoadings({ key: "loadMore", value: true });
-
       await loadMoreTransactions();
     } catch (error) {
       handleError(error, "Falha ao buscar novas transações");

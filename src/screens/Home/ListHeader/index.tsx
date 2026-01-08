@@ -3,6 +3,7 @@ import { AppHeader } from "@/components/AppHeader";
 import { TransactionCard } from "./TransactionCard";
 import { TransactionTypes } from "@/shared/enums/TransactionTypes";
 import { useTransactionContext } from "@/Context/transaction.context";
+import { FilterInput } from "./FilterInput";
 
 export const ListHeader = () => {
   const { totalTransactions } = useTransactionContext();
@@ -27,6 +28,7 @@ export const ListHeader = () => {
           <TransactionCard type={"total"} amount={totalTransactions.total} />
         </ScrollView>
       </View>
+      <FilterInput />
     </>
   );
 };
