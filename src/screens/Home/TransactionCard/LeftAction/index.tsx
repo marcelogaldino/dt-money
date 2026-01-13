@@ -18,7 +18,7 @@ export const LeftAction: FC<Params> = ({ transaction }) => {
   return (
     <Pressable
       onPress={() => {
-        openBottomSheet(<EditTransactionForm transaction={transaction} />, 1);
+        openBottomSheet(<EditTransactionForm transaction={transaction} />, 0);
       }}
     >
       <View className="bg-accent-blue-dark w-[82] h-[140] justify-center items-center rounded-l-[6]">
